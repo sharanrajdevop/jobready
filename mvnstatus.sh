@@ -12,7 +12,7 @@ echo "This Build is success ${mvn_rtn}"
 cat CI.json >> CI.json
 sudo cat >> CI.json <<EOF
 {
-"Date": "$(date +%Y%m%d-%H:%M:%S)", "LSB": "$(git rev-parse --verify HEAD)", "Branch": "$(git rev-parse --abbrev-ref HEAD)"
+"Date" : "$(date +%Y%m%d-%H:%M:%S)", "LSB" : "$(git rev-parse --verify HEAD)", "Branch" : "$(git rev-parse --abbrev-ref HEAD)"
 }
 EOF
 curl -XPOST http://172.31.13.88:9200/classes/class/1/ -H "Content-Type: application/json" -d'@CI.json'
