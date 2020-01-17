@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mvn package
+mvn clean package
 
 mvn_rtn=$?
 
@@ -9,7 +9,8 @@ if [ "${mvn_rtn}" -eq 0 ]; then
 #git rev-parse --verify HEAD
 #git log -1 | grep "commit" |awk '{$1=="commit"; print $2}'
 echo "This Build is success ${mvn_rtn}"
-sudo cat >> CI.json <<EOF
+
+sudo cat > CI.json <<EOF
 {
 "Date" : "$(date +%Y%m%d-%H:%M:%S)", "LSB" : "$(git rev-parse --verify HEAD)", "Branch" : "$(git rev-parse --abbrev-ref HEAD)"
 }
